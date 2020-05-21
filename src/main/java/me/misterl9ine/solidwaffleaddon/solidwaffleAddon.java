@@ -1,5 +1,6 @@
 package me.misterl9ine.solidwaffleaddon;
 
+import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -34,26 +35,29 @@ public class solidwaffleAddon extends JavaPlugin implements SlimefunAddon {
 
         // Create a new Category
         // This Category will use this ItemStack
-        ItemStack categoryItem = new CustomItem(Material.DIAMOND, "&4Addon Category", "", "&a> Click to open");
+        CustomItem categoryItem = new CustomItem(Material.DIAMOND, "&4Our very cool Category", "", "&a> Click to open");
 
         // Give your Category a unique id.
-        NamespacedKey categoryId = new NamespacedKey(this, "addon_category");
+        NamespacedKey categoryId = new NamespacedKey(this, "cool_category");
         Category category = new Category(categoryId, categoryItem);
 
         // Create a new Slimefun ItemStack
         // This class has many constructors, it is very important that you give each item a unique id.
-        SlimefunItemStack slimefunItem = new SlimefunItemStack("COOL_DIAMOND", Material.DIAMOND, "&4Cool Diamond", "&c+20% Coolness");
+        SlimefunItemStack itemStack = new SlimefunItemStack("COOL_DIAMOND", Material.DIAMOND, "&4Cool Diamond", "&c+20% Coolness");
 
         // The Recipe is an ItemStack Array with a length of 9.
         // It represents a Shaped Recipe in a 3x3 crafting grid
         // The machine in which this recipe is crafted in is specified further down
-        ItemStack[] recipe = { new ItemStack(Material.EMERALD), null, new ItemStack(Material.EMERALD), null, new ItemStack(Material.DIAMOND), null, new ItemStack(Material.EMERALD), null, new ItemStack(Material.EMERALD) };
+        ItemStack[] recipe = {
+                new ItemStack(Material.EMERALD),         null,                               new ItemStack(Material.EMERALD),
+                null,                                    SlimefunItems.CARBONADO,    null,
+                new ItemStack(Material.EMERALD),         null,                               new ItemStack(Material.EMERALD) };
 
         // Now you just have to register the item
         // RecipeType.ENHANCED_CRAFTING_TABLE refers to the machine in which this item is crafted in.
         // Recipy Types from Slimefun itself will automatically add the recipe to that machine
-        SlimefunItem item = new SlimefunItem(category, slimefunItem, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
-        item.register(this);
+        SlimefunItem sfitem = new SlimefunItem(category, itemStack, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+        sfitem.register(this);
     }
 
     @Override
