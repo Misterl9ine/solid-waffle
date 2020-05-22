@@ -1,21 +1,33 @@
 package me.misterl9ine.solidwaffleaddon;
 
+import java.util.Arrays;
+import java.util.List;
+
 import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.utils.ChatUtils;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
+import me.mrCookieSlime.Slimefun.Lists.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Objects.Category;
+import me.mrCookieSlime.Slimefun.Objects.Research;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.bstats.bukkit.Metrics;
+import me.mrCookieSlime.Slimefun.cscorelib2.collections.Pair;
 import me.mrCookieSlime.Slimefun.cscorelib2.config.Config;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
+import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
 
 public class solidwaffleAddon extends JavaPlugin implements SlimefunAddon {
+
+    private int researchId = 3300;
+    private Category category;
 
     @Override
     public void onEnable() {
@@ -35,11 +47,9 @@ public class solidwaffleAddon extends JavaPlugin implements SlimefunAddon {
 
         // Create a new Category
         // This Category will use this ItemStack
-        CustomItem categoryItem = new CustomItem(Material.DIAMOND, "&4Our very cool Category", "", "&a> Click to open");
+        category = new Category(new NamespacedKey(this, "items"), new CustomItem(Material.DIAMOND_SWORD, "&6ExtraGear"), 1);
 
         // Give your Category a unique id.
-        NamespacedKey categoryId = new NamespacedKey(this, "cool_category");
-        Category category = new Category(categoryId, categoryItem);
 
         // Create a new Slimefun ItemStack
         // This class has many constructors, it is very important that you give each item a unique id.
