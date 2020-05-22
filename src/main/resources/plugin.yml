@@ -8,7 +8,7 @@ author: misterl9ine
 description: A generic Slimefun4-Addon
 
 ## CHANGE this to the path of the class that extends JavaPlugin.
-main: me.misterl9ine.solidwaffleaddon.SolidwaffleAddon
+main: me.misterl9ine.solidwaffleaddon.UltimateGear
 
 ## You can change this to link to your website or repository. You can also remove this line if you want to.
 website: https://github.com/Misterl9ine/solid-waffle
